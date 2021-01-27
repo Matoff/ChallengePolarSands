@@ -114,7 +114,15 @@ public class Main {
 		    	    String PreLink = Link.substring(18).replace("/blob", "");
 		    	    
 		    	    int fileReferencePosition = PreLink.indexOf(".");
-		    	    String FileType = PreLink.substring(fileReferencePosition);
+		    	    //System.out.println("indexof: " + fileReferencePosition);
+		    	    
+		    	    //some files have NO type in their name, like LICENSE in git. This gets them to a unlisted group
+		    	    String FileType = "Unlisted";
+		    	    if(fileReferencePosition != -1)
+		    	    {
+		    	    	FileType = PreLink.substring(fileReferencePosition);
+		    	    }
+		    	    
 		    	    String RawUrl = "https://raw.githubusercontent.com" + PreLink;
 		    	    //System.out.println("Filetype:" + FileType);
 		    	    
